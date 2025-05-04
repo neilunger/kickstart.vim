@@ -1,0 +1,2 @@
+[default.extend-words]
+earch = "earch" # [s]earch in neovim config

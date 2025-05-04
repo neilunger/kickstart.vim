@@ -39,7 +39,7 @@ let maplocalleader = ' '
 " These are some of the options enabled by default in Neovim
 " These are options believed by many Vim users to be essential.
 " For more information, see `:h vim_diff.txt` in Neovim
-" I will skip the 
+" I will skip the
 filetype on
 syntax on
 set autoindent autoread background=dark
@@ -59,7 +59,7 @@ set switchbuf=uselast wildmenu "wildoptions=pum,tagfile
 set number
 " You can also add relative line numbers, to help with jumping.
 "  Experiment for yourself to see if you like it!
-"set relativenumber
+set relativenumber
 
 " Enable mouse mode, can be useful for resizing splits for example!
 set mouse=a
@@ -87,8 +87,8 @@ set breakindent
 "
 "  NOTE: See `:help undofile` and `:help undodir` for more information
 "    You may change the undodir to another directory you prefer
-"set undodir=~/.local/state/vim/undo//
-"set undofile
+set undodir=~/.local/state/vim/undo//
+set undofile
 
 " Case-insensitive searching UNLESS \C or capital in search
 set ignorecase
@@ -125,7 +125,8 @@ set scrolloff=10
 
 " Set highlight on search, but clear on pressing <Esc> in normal mode
 set hlsearch
-nnoremap <Esc> :nohlsearch<CR>
+" For some reason, this causes vim to enter in 'replace' mode
+"nnoremap <Esc> :nohlsearch<CR>
 
 " Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 " for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -198,19 +199,20 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " Colorscheme
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'gruvbox-community/gruvbox'
 
 " Set airline as statusline
 Plug 'vim-airline/vim-airline'
+
+" Plugin for trimming whitespace
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 
 " [[ Configure plugins ]]
 " Set colorscheme
 set termguicolors
-let g:tokyonight_style = 'night'  " available: night, storm
-let g:tokyonight_enable_italic = 0
-colorscheme tokyonight
+colorscheme gruvbox
 
 
 " [[ Configure vim-which-key ]]
@@ -299,6 +301,11 @@ inoremap <expr> <CR>    pumvisible() ? asyncomplete#close_popup() : "\<CR>""
 
 let g:asyncomplete_auto_completeopt = 0
 set completeopt=menuone,noinsert,noselect,preview
+
+" [[ Configure better whitespace]]
+let g:better_whitespace_enabled=0
+let g:strip_whitespace_on_save=1
+let g:strip_whitelines_at_eof=1
 
 
 " The line beneath this is called `modeline`. See `:help modeline`
