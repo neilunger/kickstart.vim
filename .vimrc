@@ -122,10 +122,9 @@ set scrolloff=10
 
 " [[ Basic Keymaps ]]
 
-" Set highlight on search, but clear on pressing <Esc> in normal mode
+" Set highlight on search, but clear on pressing <Esc> twice in normal mode
 set hlsearch
-" For some reason, this causes vim to enter in 'replace' mode
-"nnoremap <Esc> :nohlsearch<CR>
+nnoremap <Esc><Esc> :nohlsearch<CR>
 
 " Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 " for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
